@@ -25,14 +25,14 @@ jobs:
 
       - name: Install sources (normal)
         if: ${{ matrix.config.portable == false }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: packages/smplayer
           fetch-depth: 0
 
       - name: Install sources (portable)
         if: ${{ matrix.config.portable == true }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: packages/smplayer-portable
           fetch-depth: 0
