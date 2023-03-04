@@ -130,14 +130,14 @@ jobs:
 
       - name: Create artifact
         if: github.event_name != 'release'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.PACKAGEFILENAME }}
           path: packages\BUILD\output\${{ env.PACKAGEFILENAME }}
 
       - name: Upload package to release
         if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@v3
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: packages\BUILD\output\${{ env.PACKAGEFILENAME }}
