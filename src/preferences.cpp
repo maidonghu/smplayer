@@ -1,5 +1,5 @@
 /*  smplayer, GUI front-end for mplayer.
-    Copyright (C) 2006-2021 Ricardo Villalba <ricardo@smplayer.info>
+    Copyright (C) 2006-2023 Ricardo Villalba <ricardo@smplayer.info>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -178,6 +178,9 @@ void Preferences::reset() {
 
 	global_audio_equalizer = true;
 	audio_equalizer << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0; // FIXME: use initial_audio_equalizer (but it's set later)
+
+	global_speed = false;
+	speed = 1.0;
 
 	autosync = false;
 	autosync_factor = 100;
@@ -754,6 +757,9 @@ void Preferences::save() {
 
 	set->setValue("global_audio_equalizer", global_audio_equalizer);
 	set->setValue("audio_equalizer", audio_equalizer);
+
+	set->setValue("global_speed", global_speed);
+	set->setValue("speed", speed);
 
 	set->setValue("autosync", autosync);
 	set->setValue("autosync_factor", autosync_factor);
@@ -1349,6 +1355,9 @@ void Preferences::load() {
 
 	global_audio_equalizer = set->value("global_audio_equalizer", global_audio_equalizer).toBool();
 	audio_equalizer = set->value("audio_equalizer", audio_equalizer).toList();
+
+	global_speed = set->value("global_speed", global_speed).toBool();
+	speed = set->value("speed", speed).toDouble();
 
 	autosync = set->value("autosync", autosync).toBool();
 	autosync_factor = set->value("autosync_factor", autosync_factor).toInt();
